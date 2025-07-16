@@ -120,7 +120,7 @@ def propostator_tool(usuario=None):
             
         if usuario.admin:
             st.sidebar.success("Acesso: Administrador")
-            if st.button("Atualização de Rates"):
+            if st.sidebar.button("Atualização de Rates"):
                 st.session_state["logado"] = False
                 st.session_state["tela"] = "login"
                 st.session_state["usuario_logado"] = None
