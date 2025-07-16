@@ -1,3 +1,2 @@
 streamlit 
 python-pptx
-pip install --upgrade pip
