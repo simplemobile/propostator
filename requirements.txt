@@ -2,6 +2,5 @@
 streamlit 
 python-pptx
 =======
-streamlit
-python-pptx
+pip install --upgrade pip
 >>>>>>> 6ce0d1206b78d721ed2e9d22f46de034b6246563:requirements.txt
