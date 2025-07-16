@@ -62,7 +62,7 @@ def mostrar_historico(usuario=None):
     cursor = conn.cursor()
     if usuario:
         cursor.execute("""
-            SELECT datahora, tipo, cliente, opp, baseline, horas_mensais, valor_total, objetivo, nivel
+            SELECT datahora, tipo, cliente, opp, baseline, horas_mensais, valor_total
             FROM historico_propostas
             WHERE usuario_email = ?
             ORDER BY datahora DESC
@@ -70,7 +70,7 @@ def mostrar_historico(usuario=None):
         """, (usuario.email,))
     else:
         cursor.execute("""
-            SELECT datahora, tipo, cliente, opp, baseline, horas_mensais, valor_total, objetivo, nivel
+            SELECT datahora, tipo, cliente, opp, baseline, horas_mensais, valor_total
             FROM historico_propostas
             ORDER BY datahora DESC
             LIMIT 20
@@ -88,9 +88,7 @@ def mostrar_historico(usuario=None):
                     "OPP": r[3],
                     "Baseline": r[4],
                     "Horas Mensais": r[5],
-                    "Valor Total": r[6],
-                    "Objetivo": r[7],
-                    "Nível": r[8]
+                    "Valor Total": r[6]
                 } for r in rows
             ]
         )
@@ -122,6 +120,12 @@ def propostator_tool(usuario=None):
             
         if usuario.admin:
             st.sidebar.success("Acesso: Administrador")
+            if st.button("Atualização de Rates"):
+                st.session_state["logado"] = False
+                st.session_state["tela"] = "login"
+                st.session_state["usuario_logado"] = None
+                st.rerun()
+                return
         else:
             st.sidebar.info("Acesso: Solicitante")
             
