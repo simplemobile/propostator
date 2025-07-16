@@ -14,7 +14,8 @@ def criar_banco():
             nome TEXT NOT NULL,
             posicao TEXT NOT NULL,
             email TEXT NOT NULL UNIQUE,
-            senha_hash TEXT NOT NULL
+            senha TEXT NOT NULL,      -- use 'senha' se for igual ao restante do seu código
+            admin INTEGER DEFAULT 0
         )
     """)
     conn.commit()
@@ -24,7 +25,7 @@ def cadastrar_usuario(nome, posicao, email, senha_hash):
     try:
         conn = sqlite3.connect("usuarios.db")
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO usuarios (nome, posicao, email, senha_hash) VALUES (?, ?, ?, ?)", 
+        cursor.execute("INSERT INTO usuarios (nome, posicao, email, senha) VALUES (?, ?, ?, ?)", 
                        (nome, posicao, email, senha_hash))
         conn.commit()
         conn.close()
@@ -35,7 +36,7 @@ def cadastrar_usuario(nome, posicao, email, senha_hash):
 def autenticar_usuario(email, senha_hash):
     conn = sqlite3.connect("usuarios.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT nome, posicao, email, admin FROM usuarios WHERE email = ? AND senha_hash = ?", (email, senha_hash))
+    cursor.execute("SELECT nome, posicao, email, admin FROM usuarios WHERE email = ? AND senha = ?", (email, senha_hash))
     user = cursor.fetchone()
     conn.close()
     return user
