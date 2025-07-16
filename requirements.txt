@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 streamlit 
 python-pptx
+=======
+streamlit 
+python-pptx
+>>>>>>> f68e6b01eaf089442c8816577cd8b8d26af9a1a7
