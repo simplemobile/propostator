@@ -6,7 +6,6 @@ import sqlite3
 import hashlib
 import shutil
 from datetime import datetime
-from editar_taxas import taxas_ed
 
 
 # ======== BANCO HISTÓRICO ========
