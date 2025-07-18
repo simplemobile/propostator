@@ -66,7 +66,7 @@ class PropostatorApp:
             self.usuario_logado = None
 
     def tela_login(self):
-        st.subheader("Login 2")
+        st.subheader("Login - Propostator AMS")
         email = st.text_input("E-mail", key="login_email")
         senha = st.text_input("Senha", type="password", key="login_senha")
         if st.button("Entrar"):
